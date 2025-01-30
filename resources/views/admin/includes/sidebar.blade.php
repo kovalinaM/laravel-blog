@@ -14,11 +14,16 @@
                 >
                     <li class="nav-item">
                         <a href="{{route('categories.index')}}" class="nav-link">
-                            <i class="nav-icon bi bi-grip-horizontal"></i>
+                            <i class="nav-icon bi bi-list-ul"></i>
                             <p>Категории</p>
                         </a>
                     </li>
-
+                    <li class="nav-item">
+                        <a href="{{route('tag.index')}}" class="nav-link">
+                            <i class="nav-icon bi bi-tags"></i>
+                            <p>Теги</p>
+                        </a>
+                    </li>
                 </ul>
                 <!--end::Sidebar Menu-->
             </nav>

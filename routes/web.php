@@ -17,6 +17,15 @@ Route::prefix('admin')->group(function () {
         Route::patch('/{category}', \App\Http\Controllers\Admin\Category\UpdateController::class)->name('categories.update');
         Route::delete('/{category}', \App\Http\Controllers\Admin\Category\DeleteController::class)->name('categories.delete');
     });
+    Route::prefix('tags')->group(function () {
+        Route::get('/', \App\Http\Controllers\Admin\Tag\IndexController::class)->name('tag.index');
+        Route::get('/create', \App\Http\Controllers\Admin\Tag\CreateController::class)->name('tag.create');
+        Route::post('/', \App\Http\Controllers\Admin\Tag\StoreController::class)->name('tag.store');
+        Route::get('/{tag}', \App\Http\Controllers\Admin\Tag\ShowController::class)->name('tag.show');
+        Route::get('/{tag}/edit', \App\Http\Controllers\Admin\Tag\EditController::class)->name('tag.edit');
+        Route::patch('/{tag}', \App\Http\Controllers\Admin\Tag\UpdateController::class)->name('tag.update');
+        Route::delete('/{tag}', \App\Http\Controllers\Admin\Tag\DeleteController::class)->name('tag.delete');
+    });
 });
 
 Auth::routes();
