@@ -51,12 +51,34 @@
                     <div class="input-group mb-3">
                         <input type="file" class="form-control" name="preview_image">
                     </div>
+                    @error('preview_image')
+                    <div class="text-danger">
+                        Необходимо загрузить изображение в формате .jpg, .png
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 w-50">
                     <label for="">Добавить главное изображение</label>
                     <div class="input-group mb-3 ">
                         <input type="file" class="form-control" name="main_image">
                     </div>
+                    @error('main_image')
+                    <div class="text-danger">
+                        Необходимо загрузить изображение в формате .jpg, .png
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="category_id" class="form-label">Выберите категорию</label>
+                    <select name="category_id" class="form-select" id="category_id" required="">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}"
+                            {{$category->id == old($category->id) ? ' selected' : ''}}
+                            >{{$category->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">Пожалуйста, выберите категорию поста</div>
                 </div>
 
                 <input type="submit" class="btn btn-primary" value="Добавить">
