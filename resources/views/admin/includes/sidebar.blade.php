@@ -13,6 +13,12 @@
                     data-accordion="false"
                 >
                     <li class="nav-item">
+                        <a href="{{route('post.index')}}" class="nav-link">
+                            <i class="nav-icon bi bi-file-earmark-post"></i>
+                            <p>Посты</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('categories.index')}}" class="nav-link">
                             <i class="nav-icon bi bi-list-ul"></i>
                             <p>Категории</p>
