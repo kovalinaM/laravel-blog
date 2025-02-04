@@ -80,7 +80,14 @@
                     </select>
                     <div class="invalid-feedback">Пожалуйста, выберите категорию поста</div>
                 </div>
-
+                <div class="mb-3 w-50">
+                    <label>Выберите теги</label>
+                    <select class="js-example-basic-multiple w-50" name="tag_ids[]" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
+                        @endforeach
+                    </select>
+                </div>
                 <input type="submit" class="btn btn-primary" value="Добавить">
             </form>
         </div>
