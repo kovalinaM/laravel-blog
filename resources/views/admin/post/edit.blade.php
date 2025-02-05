@@ -25,26 +25,75 @@
     <div class="container-fluid">
         <!--begin::Row-->
         <div class="row">
-            <form action="{{route('post.update', $post->id)}}" method="POST" class="col-4">
+            <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
-                <div class="mb-3">
-                    <input name="title" type="text" class="form-control"  value="{{$post->title}}">
+                <div class="mb-3 col-4">
+                    <input name="title" type="text" class="form-control"  placeholder="Название поста"
+                           value="{{$post->title}}">
                     @error('title')
-                        <div class="text-danger">
-                            Это поле не должно быть пустым!
-                        </div>
+                    <div class="text-danger">
+                        Это поле не должно быть пустым!
+                    </div>
                     @enderror
                 </div>
                 <div class="mb-3">
-                    <textarea id="summernote" name="content">
-                        {{old('content')}}
+                    <textarea id="summernote" name="content" placeholder="Текст поста">
+                        {{$post->content}}
                     </textarea>
                     @error('content')
                     <div class="text-danger">
                         Это поле не должно быть пустым!
                     </div>
                     @enderror
+                </div>
+                <div class="mb-3 w-50">
+                    <label>Добавить превью</label>
+                    <div class="w-50 mb-3">
+                        <img src="{{asset('storage/' . $post->preview_image)}}" alt="preview image" class="w-50">
+                    </div>
+                    <div class="input-group mb-3">
+                        <input type="file" class="form-control" name="preview_image">
+                    </div>
+                    @error('preview_image')
+                    <div class="text-danger">
+                        Необходимо загрузить изображение в формате .jpg, .png
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3 w-50">
+                    <label for="">Добавить главное изображение</label>
+                    <div class="w-50 mb-3">
+                        <img src="{{asset('storage/' . $post->main_image)}}" alt="main image" class="w-50">
+                    </div>
+                    <div class="input-group mb-3 ">
+                        <input type="file" class="form-control" name="main_image">
+                    </div>
+                    @error('main_image')
+                    <div class="text-danger">
+                        Необходимо загрузить изображение в формате .jpg, .png
+                    </div>
+                    @enderror
+                </div>
+                <div class="mb-3 col-md-6">
+                    <label for="category_id" class="form-label">Выберите категорию</label>
+                    <select name="category_id" class="form-select" id="category_id" required="">
+                        @foreach($categories as $category)
+                            <option value="{{$category->id}}"
+                                {{$category->id == $post->category_id ? ' selected' : ''}}
+                            >{{$category->title}}
+                            </option>
+                        @endforeach
+                    </select>
+                    <div class="invalid-feedback">Пожалуйста, выберите категорию поста</div>
+                </div>
+                <div class="mb-3 w-50">
+                    <label>Выберите теги</label>
+                    <select class="js-example-basic-multiple w-50" name="tag_ids[]" multiple="multiple">
+                        @foreach($tags as $tag)
+                            <option {{is_array($post->tags->pluck('id')->toArray()) && in_array($tag->id, $post->tags->pluck('id')->toArray()) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
+                        @endforeach
+                    </select>
                 </div>
                 <input type="submit" class="btn btn-primary" value="Обновить">
             </form>
