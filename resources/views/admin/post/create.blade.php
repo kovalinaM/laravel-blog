@@ -32,7 +32,7 @@
                     value="{{old('title')}}">
                     @error('title')
                         <div class="text-danger">
-                            Это поле не должно быть пустым!
+                            {{$message}}
                         </div>
                     @enderror
                 </div>
@@ -42,7 +42,7 @@
                     </textarea>
                 @error('content')
                     <div class="text-danger">
-                        Это поле не должно быть пустым!
+                        {{$message}}
                     </div>
                     @enderror
                 </div>
@@ -53,7 +53,7 @@
                     </div>
                     @error('preview_image')
                     <div class="text-danger">
-                        Необходимо загрузить изображение в формате .jpg, .png
+                        {{$message}}
                     </div>
                     @enderror
                 </div>
@@ -64,7 +64,7 @@
                     </div>
                     @error('main_image')
                     <div class="text-danger">
-                        Необходимо загрузить изображение в формате .jpg, .png
+                        {{$message}}
                     </div>
                     @enderror
                 </div>
@@ -78,7 +78,11 @@
                             </option>
                         @endforeach
                     </select>
-                    <div class="invalid-feedback">Пожалуйста, выберите категорию поста</div>
+                    @error('category_id')
+                    <div class="text-danger">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <div class="mb-3 w-50">
                     <label>Выберите теги</label>
@@ -87,6 +91,11 @@
                             <option {{is_array(old('tag_ids')) && in_array($tag->id, old('tag_ids')) ? 'selected' : ''}} value="{{$tag->id}}">{{$tag->title}}</option>
                         @endforeach
                     </select>
+                    @error('tag_ids')
+                    <div class="text-danger">
+                        {{$message}}
+                    </div>
+                    @enderror
                 </div>
                 <input type="submit" class="btn btn-primary" value="Добавить">
             </form>
