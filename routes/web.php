@@ -38,6 +38,16 @@ Route::prefix('admin')->group(function () {
         Route::patch('/{tag}', \App\Http\Controllers\Admin\Tag\UpdateController::class)->name('tag.update');
         Route::delete('/{tag}', \App\Http\Controllers\Admin\Tag\DeleteController::class)->name('tag.delete');
     });
+
+    Route::prefix('users')->group(function () {
+        Route::get('/', \App\Http\Controllers\Admin\User\IndexController::class)->name('user.index');
+        Route::get('/create', \App\Http\Controllers\Admin\User\CreateController::class)->name('user.create');
+        Route::post('/', \App\Http\Controllers\Admin\User\StoreController::class)->name('user.store');
+        Route::get('/{user}', \App\Http\Controllers\Admin\User\ShowController::class)->name('user.show');
+        Route::get('/{user}/edit', \App\Http\Controllers\Admin\User\EditController::class)->name('user.edit');
+        Route::patch('/{user}', \App\Http\Controllers\Admin\User\UpdateController::class)->name('user.update');
+        Route::delete('/{user}', \App\Http\Controllers\Admin\User\DeleteController::class)->name('user.delete');
+    });
 });
 
 Auth::routes();
