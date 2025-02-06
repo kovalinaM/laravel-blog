@@ -3,11 +3,13 @@
 namespace App\Http\Controllers\Admin\User;
 
 use App\Http\Controllers\Controller;
+use App\Models\User;
 
 class CreateController extends Controller
 {
     public function __invoke(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
-        return view('admin.user.create');
+        $roles = User::getRoles();
+        return view('admin.user.create', compact('roles'));
     }
 }
