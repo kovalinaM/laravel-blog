@@ -24,7 +24,6 @@ class StoreRequest extends FormRequest
         return [
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
-            'password' => 'required|string|min:6',
             'role' => 'required|integer',
         ];
     }
@@ -39,9 +38,6 @@ class StoreRequest extends FormRequest
             'email.email' => 'Введен неправильный формат почты',
             'email.max' => 'Почта не более 255 символов',
             'email.unique' => 'Пользователь с таким email уже существует',
-            'password.required' => 'Это поле не должно быть пустым',
-            'password.string' => 'Пароль должен быть строкой',
-            'password.min' => 'Пароль должен быть не менее 6 символов',
         ];
     }
 }
