@@ -9,7 +9,7 @@
                 <div class="col-sm-6"><h3 class="mb-0">Редактирование категории</h3></div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Категории</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('categories.index')}}">Категории</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Редактирование категории</li>
                     </ol>
                 </div>

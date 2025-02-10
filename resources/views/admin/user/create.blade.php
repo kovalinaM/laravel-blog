@@ -9,7 +9,7 @@
                 <div class="col-sm-6"><h3 class="mb-0">Добавление пользователя</h3></div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Категории</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('user.index')}}">Пользователи</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Добавление пользователя</li>
                     </ol>
                 </div>
@@ -43,14 +43,6 @@
                     </div>
                     @enderror
                 </div>
-{{--                <div class="mb-3">--}}
-{{--                    <input name="password" type="password" class="form-control" placeholder="Пароль">--}}
-{{--                    @error('password')--}}
-{{--                    <div class="text-danger">--}}
-{{--                        {{$message}}--}}
-{{--                    </div>--}}
-{{--                    @enderror--}}
-{{--                </div>--}}
                 <div class="mb-3 col-md-6">
                     <label class="form-label">Выберите роль</label>
                     <select name="role" class="form-select" id="role" required="">

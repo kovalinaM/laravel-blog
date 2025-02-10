@@ -17,7 +17,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
     Route::prefix('admin')->group(function () {
-        Route::get('/', \App\Http\Controllers\Admin\Main\IndexController::class);
+        Route::get('/', \App\Http\Controllers\Admin\Main\IndexController::class)->name('admin.index');
 
         Route::prefix('posts')->group(function () {
             Route::get('/', \App\Http\Controllers\Admin\Post\IndexController::class)->name('post.index');

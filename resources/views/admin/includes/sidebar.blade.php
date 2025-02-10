@@ -13,6 +13,12 @@
                     data-accordion="false"
                 >
                     <li class="nav-item">
+                        <a href="{{route('admin.index')}}" class="nav-link">
+                            <i class="bi bi-house-door-fill"></i>
+                            <p>Главная</p>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="{{route('user.index')}}" class="nav-link">
                             <i class="nav-icon bi bi-people-fill"></i>
                             <p>Пользователи</p>

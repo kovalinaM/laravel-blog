@@ -9,7 +9,7 @@
                 <div class="col-sm-6"><h3 class="mb-0">Редактирование тега</h3></div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Теги</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('tag.index')}}">Теги</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Редактирование тега</li>
                     </ol>
                 </div>
