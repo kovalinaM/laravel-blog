@@ -11,6 +11,7 @@ Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('personal')->group(function () {
         Route::get('/', \App\Http\Controllers\Personal\Main\IndexController::class)->name('personal.index');
         Route::get('/liked', \App\Http\Controllers\Personal\Liked\IndexController::class)->name('personal.liked.index');
+        Route::delete('/liked/{post}', \App\Http\Controllers\Personal\Liked\DeleteController::class)->name('personal.liked.delete');
         Route::get('/comments', \App\Http\Controllers\Personal\Comment\IndexController::class)->name('personal.comment.index');
     });
 });
