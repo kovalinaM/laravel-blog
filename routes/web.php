@@ -13,6 +13,9 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/liked', \App\Http\Controllers\Personal\Liked\IndexController::class)->name('personal.liked.index');
         Route::delete('/liked/{post}', \App\Http\Controllers\Personal\Liked\DeleteController::class)->name('personal.liked.delete');
         Route::get('/comments', \App\Http\Controllers\Personal\Comment\IndexController::class)->name('personal.comment.index');
+        Route::get('/comments/{comment}/edit', \App\Http\Controllers\Personal\Comment\EditController::class)->name('personal.comment.edit');
+        Route::patch('/comments/{comment}', \App\Http\Controllers\Personal\Comment\UpdateController::class)->name('personal.comment.update');
+        Route::delete('/comments/{comment}', \App\Http\Controllers\Personal\Comment\DeleteController::class)->name('personal.comment.delete');
     });
 });
 
