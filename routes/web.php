@@ -7,9 +7,13 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class);
 
-Route::get('/dashboard', function () {
-    return view('admin.main.index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+Route::middleware(['auth', 'verified'])->group(function () {
+    Route::prefix('personal')->group(function () {
+        Route::get('/', \App\Http\Controllers\Personal\Main\IndexController::class)->name('personal.index');
+        Route::get('/liked', \App\Http\Controllers\Personal\Liked\IndexController::class)->name('personal.liked.index');
+        Route::get('/comments', \App\Http\Controllers\Personal\Comment\IndexController::class)->name('personal.comment.index');
+    });
+});
 
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
