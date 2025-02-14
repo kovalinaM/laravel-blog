@@ -8,8 +8,8 @@
             <div class="row">
                 <div class="col-sm-6 d-flex align-items-center gap-1">
                     <h3 class="mb-0">{{$post->title}}</h3>
-                    <a href="{{route('post.edit', $post->id)}}" class="text-success"><i class="bi bi-pencil-square"></i></a>
-                    <form action="{{route('post.delete', $post->id)}}" method="POST">
+                    <a href="{{route('admin.post.edit', $post->id)}}" class="text-success"><i class="bi bi-pencil-square"></i></a>
+                    <form action="{{route('admin.post.delete', $post->id)}}" method="POST">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="border-0 bg-transparent">
@@ -19,7 +19,7 @@
                 </div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/admin">Home</a></li>
                         <li class="breadcrumb-item" aria-current="page">Посты</li>
                         <li class="breadcrumb-item active" aria-current="page">{{$post->title}}</li>
                     </ol>

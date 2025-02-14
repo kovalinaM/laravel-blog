@@ -26,7 +26,7 @@
         <!--begin::Row-->
         <div class="row">
             <div class="col-12">
-                <a  href="{{route('post.create')}}" class="btn btn-primary mb-2">Добавить</a>
+                <a  href="{{route('admin.post.create')}}" class="btn btn-primary mb-2">Добавить</a>
             </div>
         </div>
         <div class="row">
@@ -49,10 +49,10 @@
                                 <td>{{$post->id}}</td>
                                 <td>{{$post->title}}</td>
                                 <td>{{$post->content}}</td>
-                                <td class="text-center"><a href="{{route('post.show', $post->id)}}"><i class="bi bi-eye-fill"></i></a></td>
-                                <td class="text-center"><a href="{{route('post.edit', $post->id)}}" class="text-success"><i class="bi bi-pencil-square"></i></a></td>
+                                <td class="text-center"><a href="{{route('admin.post.show', $post->id)}}"><i class="bi bi-eye-fill"></i></a></td>
+                                <td class="text-center"><a href="{{route('admin.post.edit', $post->id)}}" class="text-success"><i class="bi bi-pencil-square"></i></a></td>
                                 <td class="text-center">
-                                    <form action="{{route('post.delete', $post->id)}}" method="POST">
+                                    <form action="{{route('admin.post.delete', $post->id)}}" method="POST">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="border-0 bg-transparent">

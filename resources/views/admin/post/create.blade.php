@@ -9,7 +9,7 @@
                 <div class="col-sm-6"><h3 class="mb-0">Добавление поста</h3></div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="{{route('post.index')}}">Посты</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.post.index')}}">Посты</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Добавление поста</li>
                     </ol>
                 </div>

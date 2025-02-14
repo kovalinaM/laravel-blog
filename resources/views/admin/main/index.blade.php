@@ -39,7 +39,7 @@
                        <i class="nav-icon bi bi-file-earmark-post"></i>
                    </div>
                     <a
-                        href="{{route('post.index')}}"
+                        href="{{route('admin.post.index')}}"
                         class="small-box-footer link-light link-underline-opacity-0 link-underline-opacity-50-hover"
                     >
                         Подробнее <i class="bi bi-box-arrow-up-right"></i>

@@ -7,6 +7,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', IndexController::class);
 
+Route::prefix('posts')->group(function () {
+    Route::get('/', \App\Http\Controllers\Post\IndexController::class)->name('post.index');
+    Route::get('/{post}', \App\Http\Controllers\Post\ShowController::class)->name('post.show');
+});
+
 Route::middleware(['auth', 'verified'])->group(function () {
     Route::prefix('personal')->group(function () {
         Route::get('/', \App\Http\Controllers\Personal\Main\IndexController::class)->name('personal.index');
@@ -28,13 +33,13 @@ Route::middleware(['auth', 'verified'])->group(function () {
         Route::get('/', \App\Http\Controllers\Admin\Main\IndexController::class)->name('admin.index');
 
         Route::prefix('posts')->group(function () {
-            Route::get('/', \App\Http\Controllers\Admin\Post\IndexController::class)->name('post.index');
-            Route::get('/create', \App\Http\Controllers\Admin\Post\CreateController::class)->name('post.create');
-            Route::post('/', \App\Http\Controllers\Admin\Post\StoreController::class)->name('post.store');
-            Route::get('/{post}', \App\Http\Controllers\Admin\Post\ShowController::class)->name('post.show');
-            Route::get('/{post}/edit', \App\Http\Controllers\Admin\Post\EditController::class)->name('post.edit');
-            Route::patch('/{post}', \App\Http\Controllers\Admin\Post\UpdateController::class)->name('post.update');
-            Route::delete('/{post}', \App\Http\Controllers\Admin\Post\DeleteController::class)->name('post.delete');
+            Route::get('/', \App\Http\Controllers\Admin\Post\IndexController::class)->name('admin.post.index');
+            Route::get('/create', \App\Http\Controllers\Admin\Post\CreateController::class)->name('admin.post.create');
+            Route::post('/', \App\Http\Controllers\Admin\Post\StoreController::class)->name('admin.post.store');
+            Route::get('/{post}', \App\Http\Controllers\Admin\Post\ShowController::class)->name('admin.post.show');
+            Route::get('/{post}/edit', \App\Http\Controllers\Admin\Post\EditController::class)->name('admin.post.edit');
+            Route::patch('/{post}', \App\Http\Controllers\Admin\Post\UpdateController::class)->name('admin.post.update');
+            Route::delete('/{post}', \App\Http\Controllers\Admin\Post\DeleteController::class)->name('admin.post.delete');
         });
 
         Route::prefix('categories')->group(function () {

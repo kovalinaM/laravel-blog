@@ -9,7 +9,7 @@
                 <div class="col-sm-6"><h3 class="mb-0">Редактирование поста</h3></div>
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-end">
-                        <li class="breadcrumb-item"><a href="{{route('post.index')}}">Посты</a></li>
+                        <li class="breadcrumb-item"><a href="{{route('admin.post.index')}}">Посты</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Редактирование поста</li>
                     </ol>
                 </div>
@@ -25,7 +25,7 @@
     <div class="container-fluid">
         <!--begin::Row-->
         <div class="row">
-            <form action="{{route('post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
+            <form action="{{route('admin.post.update', $post->id)}}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PATCH')
                 <div class="mb-3 col-4">
