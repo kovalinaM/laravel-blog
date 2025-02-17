@@ -5,11 +5,15 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', IndexController::class);
+Route::get('/', IndexController::class)->name('main.index');
 
 Route::prefix('posts')->group(function () {
     Route::get('/', \App\Http\Controllers\Post\IndexController::class)->name('post.index');
     Route::get('/{post}', \App\Http\Controllers\Post\ShowController::class)->name('post.show');
+
+    Route::prefix('{post}/comments')->group(function () {
+        Route::post('/', \App\Http\Controllers\Post\Comment\StoreController::class)->name('post.comment.store');
+    });
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
