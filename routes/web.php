@@ -14,6 +14,17 @@ Route::prefix('posts')->group(function () {
     Route::prefix('{post}/comments')->group(function () {
         Route::post('/', \App\Http\Controllers\Post\Comment\StoreController::class)->name('post.comment.store');
     });
+    Route::prefix('{post}/likes')->group(function () {
+        Route::post('/', \App\Http\Controllers\Post\Like\StoreController::class)->name('post.like.store');
+    });
+});
+
+Route::prefix('categories')->group(function () {
+    Route::get('/', \App\Http\Controllers\Category\IndexController::class)->name('category.index');
+
+    Route::prefix('{category}/posts')->group(function () {
+        Route::get('/', \App\Http\Controllers\Category\Post\IndexController::class)->name('category.post.index');
+    });
 });
 
 Route::middleware(['auth', 'verified'])->group(function () {
