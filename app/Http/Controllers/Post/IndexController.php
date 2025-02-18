@@ -10,8 +10,12 @@ class IndexController extends Controller
     public function __invoke(): \Illuminate\Contracts\View\View|\Illuminate\Contracts\View\Factory|\Illuminate\Foundation\Application
     {
         $posts = Post::paginate(6);
-        $randomPosts = Post::get()->random(4);
-        $likedPosts = Post::withCount('likedUsers')->orderBy('liked_users_count', 'DESC')->get()->take(4);
+        $randomPosts = Post::inRandomOrder()->limit(4)->get();
+
+        $likedPosts = Post::withCount('likedUsers')
+            ->orderByDesc('liked_users_count')
+            ->limit(4)
+            ->get();
 
         return view('post.index', compact('posts', 'randomPosts', 'likedPosts'));
     }
